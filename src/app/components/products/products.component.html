@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <ul class="navbar navbar-nav">
+    <li>
+      <button (click)="OnGetAllProducts()" class="btn btn-outline-info"> ALL</button>
+    </li>
+      <li> <button  (click)="OnGetSelectedProduct()" class="btn btn-outline-info"> Selected</button>
+      </li>
+    <li>
+      <button  (click)="OnGetAvailableProduct()" class="btn btn-outline-info"> Available</button>
+
+    </li>
+    <li>
+      <button  (click)="OnNewProduct()" class="btn btn-outline-info"> ADD</button>
+
+    </li>
+
+  </ul>
+  <ul class="navbar-nav m-lg-auto">
+    <form #f="ngForm" (ngSubmit)="Onsearch(f.value)">
+      <div class="form-group">
+        <input ngModel name="keyword" class="form-control" type="text">
+        <button class="btn btn-outline-info" >
+          <span class="fa fa-search-plus"></span>
+        </button>
+
+      </div>
+    </form>
+
+
+  </ul>
+</nav>
+
+<ng-container *ngIf="products$|async as result "[ngSwitch]="result.dataState">
+  <ng-container *ngSwitchCase="DataStateEnum.LODING">
+     LOADING YA KHRA
+  </ng-container>
+  <ng-container *ngSwitchCase="DataStateEnum.ERROR">
+    <div class="alert-danger">
+      {{result.errorMessage}}
+    </div>
+  </ng-container>
+
+  <ng-container *ngSwitchCase="DataStateEnum.LOADED">
+    <table class="table">
+      <tr>
+        <th> ID</th> <th> Name</th> <th> Price</th> Quantity<th> Selected</th> <th> Available</th>
+      </tr>
+      <tr *ngFor="let p of result.data" >
+        <td> {{p.id}}</td>
+        <td> {{p.name}}</td>
+        <td> {{p.price}}</td>
+        <td> {{p.quantity}}</td>
+        <td> {{p.selected}}</td>
+        <td> {{p.available}}</td>
+        <td>
+          <button (click)="Onselect(p)" [ngClass]="p.selected?'btn-success':'btn-danger'" class="btn btn-sm" >
+            <span *ngIf="p.selected"> Unselect</span>
+            <span *ngIf="!p.selected"> Select</span>
+          </button>
+        </td>
+        <td>
+          <button (click)="OnDeleteproduct(p)" class="btn btn-danger">
+            <span class="fa fa-trash-o"> </span>
+          </button>
+        </td>
+        <td>
+          <button (click)="OnEditproduct(p)" class="btn btn-danger">
+            <span class="fa fa-edit"> </span>
+          </button>
+        </td>
+      </tr>
+    </table>
+
+
+  </ng-container>
+
+
+</ng-container>
+

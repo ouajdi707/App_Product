@@ -1,0 +1,60 @@
+{
+  "products": [
+    {
+      "id": 2,
+      "name": "iphone17",
+      "price": 1700,
+      "quantity": 600,
+      "selected": false,
+      "available": false
+    },
+    {
+      "id": 3,
+      "name": "iphone12",
+      "price": 1700,
+      "quantity": 600,
+      "selected": false,
+      "available": true
+    },
+    {
+      "id": 1,
+      "name": "Printer",
+      "price": 1700,
+      "quantity": 600,
+      "selected": true,
+      "available": false
+    },
+    {
+      "id": 4,
+      "name": "Laptop",
+      "price": 1700,
+      "quantity": 600,
+      "selected": false,
+      "available": false
+    },
+    {
+      "name": "samsung a70",
+      "price": "1500",
+      "quantity": "4",
+      "selected": true,
+      "available": true,
+      "id": 5
+    },
+    {
+      "name": "shit",
+      "price": 0,
+      "quantity": 0,
+      "selected": true,
+      "available": true,
+      "id": 6
+    },
+    {
+      "name": "aaa",
+      "price": 0,
+      "quantity": 0,
+      "selected": true,
+      "available": true,
+      "id": 7
+    }
+  ]
+}
